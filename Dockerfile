@@ -71,7 +71,8 @@ RUN echo '@testing http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/
         libmediainfo@testing \
         openjdk11 \
         nss \
-        unzip
+        unzip \
+        vim
 
 WORKDIR /usr/local/bin
 
