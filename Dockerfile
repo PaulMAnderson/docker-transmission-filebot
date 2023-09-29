@@ -69,7 +69,7 @@ RUN echo '@testing http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/
         java-jna \
         libzen@testing \
         libmediainfo@testing \
-        openjdk11 \
+        openjdk11-jre-headless \
         nss \
         unzip \
         vim
