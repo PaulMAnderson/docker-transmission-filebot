@@ -5,4 +5,4 @@ PORT=$(jq '.["rpc-port"]' /config/settings.json)
 
 s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost ${PORT:-9091}" \
     s6-setuidgid abc /usr/bin/transmission-daemon \
-    -g /config -f
+    -g /config -f --logfile /config/logs/transmission.log
