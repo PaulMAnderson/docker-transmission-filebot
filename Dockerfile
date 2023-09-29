@@ -69,7 +69,7 @@ RUN echo '@testing http://dl-4.alpinelinux.org/alpine/edge/testing' >> /etc/apk/
         java-jna \
         libzen@testing \
         libmediainfo@testing \
-        openjdk8-jre-base \
+        openjdk11 \
         nss \
         unzip
 
