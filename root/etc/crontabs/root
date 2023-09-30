@@ -8,3 +8,4 @@
 
 # run daily blocklist update
 0 3 * * * /app/blocklist-update.sh 2>&1
+0 3 * * * /config/scripts/transmission-garbagecollect.sh >> /config/logs/transmissiongc.log 2>&1

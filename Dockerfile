@@ -90,16 +90,6 @@ COPY root/ /
 
 RUN filebot --license /defaults/*.psm
 
-# make scripts executable and add cron job
-RUN chmod +rx /defaults/*
-
-# add transmission garbage collection
-RUN chmod +rx /defaults/transmission-garbagecollect.sh
-RUN echo "0 3 * * * /defaults/transmission-garbagecollect.sh >> /config/logs/transmissiongc.log 2>&1" >> /etc/crontabs/root
-
-RUN mkdir -p /config
-RUN mkdir -p /config/logs
-
 # ports and volumes
 EXPOSE 9091 51413/tcp 51413/udp
 VOLUME /config

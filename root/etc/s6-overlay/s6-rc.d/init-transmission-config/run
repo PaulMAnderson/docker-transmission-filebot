@@ -3,12 +3,13 @@
 
 # make folders
 mkdir -p \
-    /downloads/{complete,incomplete} /watch /config /config/logs
+    /downloads/{complete,incomplete} /watch /config/{logs,scripts}
 
 # copy config
-if [[ ! -f /config/settings.json ]]; then
-    cp /defaults/settings.json /config/settings.json
-fi
+# if [[ ! -f /config/settings.json ]]; then
+cp /defaults/settings.json /config/settings.json
+cp /defaults/*.sh /config/scripts/
+# fi
 
 if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
     sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
@@ -42,9 +43,6 @@ if [[ -n "${PEERPORT}" ]]; then
 fi
 
 # permissions
-chown -R abc:abc /config
-chown -R abc:abc /defaults
-
 if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
     lsiown abc:abc /downloads
 fi
@@ -61,6 +59,14 @@ if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
     lsiown abc:abc /watch
 fi
 
+if [[ "$(stat -c '%U' /config)" != "abc" ]]; then
+    lsiown abc:abc /config/logs
+fi
+
 if [[ "$(stat -c '%U' /config/logs)" != "abc" ]]; then
+    lsiown abc:abc /config/logs
+fi
+
+if [[ "$(stat -c '%U' /config/scripts)" != "abc" ]]; then
     lsiown abc:abc /config/logs
 fi
