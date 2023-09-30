@@ -3,7 +3,7 @@
 
 # make folders
 mkdir -p \
-    /downloads/{complete,incomplete} /watch /config /config/logs
+    /downloads/{complete,incomplete} /watch /config/logs
 
 # copy config
 if [[ ! -f /config/settings.json ]]; then
@@ -59,4 +59,8 @@ fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
     lsiown abc:abc /watch
+fi
+
+if [[ "$(stat -c '%U' /config/logs)" != "abc" ]]; then
+    lsiown abc:abc /config/logs
 fi
