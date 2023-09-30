@@ -3,7 +3,7 @@
 
 # make folders
 mkdir -p \
-    /downloads/{complete,incomplete} /watch /config/logs
+    /downloads/{complete,incomplete} /watch /config /config/logs
 
 # copy config
 if [[ ! -f /config/settings.json ]]; then
