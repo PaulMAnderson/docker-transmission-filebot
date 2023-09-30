@@ -84,11 +84,14 @@ RUN chmod +x filebot.sh
 RUN mv filebot.sh filebot
 RUN filebot -script fn:sysinfo
 
+
 # copy local files
 COPY root/ /
 
+RUN filebot --license /defaults/*.psm
+
 # make scripts executable and add cron job
-RUN chmod +rx /defaults/transmission-postprocess.sh
+RUN chmod +rx /defaults/*
 
 # add transmission garbage collection
 RUN chmod +rx /defaults/transmission-garbagecollect.sh
